@@ -6,7 +6,8 @@
 ## 2 Installation
 
     git clone https://github.com/linzhi2013/group_genetic_distance
-    pip install -e .
+    cd group_genetic_distance
+    pip install .
 
 
 ## 3 Usage
