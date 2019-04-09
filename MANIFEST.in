@@ -6,4 +6,3 @@
 include README.md
 include LICENSE
 include changelog
-recursive-include bold_identification/data *
