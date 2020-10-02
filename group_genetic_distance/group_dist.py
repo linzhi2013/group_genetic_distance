@@ -222,7 +222,9 @@ def main():
     args = get_para()
 
     f_dir = os.getcwd()
-    R_script = write_R_tmp_script(msa_format=args.msa_format)
+    R_script = write_R_tmp_script(
+        msa_format=args.msa_format,
+        pairwise_deletion=args.pairwise_deletion)
 
 
     if args.msa_file:
