@@ -1,0 +1,2 @@
+# file: all-genes.between-group.dist
+len(vals), min(vals), max(vals), statistics.mean(vals), statistics.median(vals), statistics.stdev(vals)
