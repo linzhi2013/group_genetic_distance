@@ -122,7 +122,7 @@ w: input is within group data
     else:
         group_vals = read_within_group_dist(f_lst=f_lst)
 
-    join_dist(group_vals=group_vals, val_width=3)
+    join_dist(group_vals=group_vals, val_width=val_width)
 
 
 if __name__ == '__main__':

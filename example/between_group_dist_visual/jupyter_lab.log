@@ -1,0 +1,22 @@
+[I 17:02:44.720 LabApp] Writing notebook server cookie secret to /home/guanliang/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 17:02:46.755 LabApp] JupyterLab extension loaded from /home/guanliang/soft/miniconda3/lib/python3.8/site-packages/jupyterlab
+[I 17:02:46.755 LabApp] JupyterLab application directory is /home/guanliang/soft/miniconda3/share/jupyter/lab
+[I 17:02:46.758 LabApp] Serving notebooks from local directory: /home/guanliang/dev/group_genetic_distance/example/between_group_dist_visual
+[I 17:02:46.758 LabApp] Jupyter Notebook 6.1.1 is running at:
+[I 17:02:46.758 LabApp] http://localhost:8888/?token=b8ef2211668d952451b09780770477ac478b0c1491b9e16b
+[I 17:02:46.758 LabApp]  or http://127.0.0.1:8888/?token=b8ef2211668d952451b09780770477ac478b0c1491b9e16b
+[I 17:02:46.759 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 17:02:47.102 LabApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/guanliang/.local/share/jupyter/runtime/nbserver-2808439-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=b8ef2211668d952451b09780770477ac478b0c1491b9e16b
+     or http://127.0.0.1:8888/?token=b8ef2211668d952451b09780770477ac478b0c1491b9e16b
+[W 17:02:51.510 LabApp] Could not determine jupyterlab build status without nodejs
+[I 17:03:02.875 LabApp] Writing notebook-signing key to /home/guanliang/.local/share/jupyter/notebook_secret
+[W 17:03:02.877 LabApp] Notebook REAMDE.ipynb is not trusted
+[I 17:03:05.080 LabApp] Kernel started: 6f2792af-61d8-49ef-850a-6ea33e2ae2ab, name: python3
+[I 17:03:44.563 LabApp] Saving file at /REAMDE.ipynb
+[W 17:03:44.563 LabApp] Notebook REAMDE.ipynb is not trusted
+[I 17:03:57.384 LabApp] Kernel shutdown: 6f2792af-61d8-49ef-850a-6ea33e2ae2ab
