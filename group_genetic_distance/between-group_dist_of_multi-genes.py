@@ -6,6 +6,7 @@ import argparse
 import sys
 import subprocess
 import os
+import numpy as np
 
 
 def get_para():
@@ -57,6 +58,7 @@ def stat_dist(vals=None):
     # one val corresponds to two members.
     if len(vals) <= 0:
         return 'NA.', 'NA.', 'NA.', 'NA.', 'NA.', 'NA.'
+
     return len(vals), min(vals), max(vals), statistics.mean(vals), statistics.median(vals), statistics.stdev(vals)
 
 
@@ -71,6 +73,8 @@ def distStat_of_all_genes_of_diff_group(pairwise_dist_list=None, seqid_group=Non
                 k1, k2, val = a
                 g1 = seqid_group[k1]
                 g2 = seqid_group[k2]
+                if str(val) == 'inf':
+                    val = np.nan
 
                 if k1 not in group1_group2_seq1Seq2Dist:
                     group1_group2_seq1Seq2Dist.setdefault(g1, {})
