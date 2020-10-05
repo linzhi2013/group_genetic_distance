@@ -86,7 +86,8 @@ def distStat_of_all_genes_of_diff_group(pairwise_dist_list=None, seqid_group=Non
     for g1 in sorted(group1_group2_seq1Seq2Dist.keys()):
         for g2 in sorted(group1_group2_seq1Seq2Dist[g1].keys()):
             vals = group1_group2_seq1Seq2Dist[g1][g2]
-            line = [str(i) for i in stat_dist(vals)]
+            vals_clean = [x for x in vals if str(x) != 'nan']
+            line = [str(i) for i in stat_dist(vals_clean)]
             print(g1, g2, '\t'.join(line), sep='\t', file=out_handle)
 
 def main():
