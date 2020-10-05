@@ -14,6 +14,9 @@ def get_para():
 To derive between-groups genetic distance of all genes
 based on individual gene pairwise genetic distance matrix, which
 can be generated with R ape package `dist.dna(a, as.matrix = TRUE)`
+
+Beware that, when evolutionary modeles are applied, the genetic distance
+can be greater than 1.
     '''
 
     parser = argparse.ArgumentParser(description=description)
