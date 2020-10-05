@@ -224,6 +224,7 @@ def main():
     f_dir = os.getcwd()
     R_script = write_R_tmp_script(
         msa_format=args.msa_format,
+        model = args.model,
         pairwise_deletion=args.pairwise_deletion)
 
 
