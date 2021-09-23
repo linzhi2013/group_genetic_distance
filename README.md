@@ -15,6 +15,7 @@
     python3 group_genetic_distance/group_dist.py
 
 
-## Author
+## Copyright
 Guanliang Meng
 
+**If you use the scripts in your publications, or "steal" the codes, I must be one of the co-authors!**
