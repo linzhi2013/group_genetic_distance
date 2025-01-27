@@ -40,7 +40,9 @@ Copyright Guanliang Meng (linzhi2012'@'gmail'.'com)
 
     parser.add_argument('-i_o', metavar='<file>', type=argparse.FileType('w'),
         default=sys.stdout, help='within-group distance output')
-
+    
+    parser.add_argument('-max_dist', metavar='<float>', type=float, 
+        default=10, help="distance greater than this value will be excluded. This could be due to a bug in the dist.dna() function. I observed it happens when the two sequences have long gaps(-) on 5' and 3' respectively while the overlapping region is several bp in length! [%(default)s]")
 
     parser.add_argument('-model', default="K80",
         choices=["raw", "N", "TS", "TV", "JC69", "K80", "F81", "K81", "F84",
@@ -148,14 +150,20 @@ def get_members_of_specific_group(mdict=None, group_seqid=None, group=None):
     return items
 
 
-def stat_dist(items=None):
+def stat_dist(items=None, max_dist=10):
     raw_vals = []
     for key1, key2, val in items:
         raw_vals.append(val)
 
     # remove potential inf
-    vals = [x for x in raw_vals if not math.isinf(x)]
-
+    raw2_vals = [x for x in raw_vals if not math.isinf(x)]
+    vals = []
+    for x in raw2_vals:
+        if x > max_dist:
+            print("excluding", x) 
+        else:
+           vals.append(x)
+    # [x for x in vals if x < max_dist]
     # one val corresponds to two members.
     if len(vals) <= 0:
         return 'NA.', 'NA.', 'NA.', 'NA.', 'NA.'
@@ -175,16 +183,16 @@ def get_members_of_paired_group(mdict=None, group_seqid=None, group1=None, group
     return items
 
 
-def dist_within_group(mdict=None, group_seqid=None, out_handle=None):
+def dist_within_group(mdict=None, group_seqid=None, out_handle=None, max_dist=10):
     print('# within-group distances:', file=out_handle)
     print('# group\tMinimum\tMaximum\tAverage\tMedian\tSample_std', file=out_handle)
     for group in sorted(group_seqid.keys()):
         items = get_members_of_specific_group(mdict=mdict, group_seqid=group_seqid, group=group)
-        line = [str(i) for i in stat_dist(items)]
+        line = [str(i) for i in stat_dist(items, max_dist)]
         print(group, '\t'.join(line), sep='\t', file=out_handle)
 
 
-def dist_between_groups(mdict=None, group_seqid=None, out_handle=None):
+def dist_between_groups(mdict=None, group_seqid=None, out_handle=None, max_dist=10):
     groups = sorted(group_seqid.keys())
     already_computed_pairs = {}
     print('# between-groups distances:', file=out_handle)
@@ -200,7 +208,7 @@ def dist_between_groups(mdict=None, group_seqid=None, out_handle=None):
             already_computed_pairs[forward] = 1
             already_computed_pairs[backward] = 1
             items = get_members_of_paired_group(mdict=mdict, group_seqid=group_seqid, group1=group1, group2=group2)
-            line = [str(i) for i in stat_dist(items)]
+            line = [str(i) for i in stat_dist(items, max_dist)]
             print(group1, group2, '\t'.join(line), sep='\t', file=out_handle)
 
 
@@ -246,12 +254,14 @@ def main():
     dist_between_groups(
         mdict=triu_dict,
         group_seqid=filtered_group_seqid,
-        out_handle=args.b_o)
+        out_handle=args.b_o,
+        max_dist=args.max_dist)
 
     dist_within_group(
         mdict=triu_dict,
         group_seqid=filtered_group_seqid,
-        out_handle=args.i_o)
+        out_handle=args.i_o,
+        max_dist=args.max_dist)
 
 
 if __name__ == '__main__':
