@@ -6,7 +6,7 @@ import argparse
 import sys
 import subprocess
 import os
-
+import math
 
 def get_para():
     description = '''
@@ -149,9 +149,12 @@ def get_members_of_specific_group(mdict=None, group_seqid=None, group=None):
 
 
 def stat_dist(items=None):
-    vals = []
+    raw_vals = []
     for key1, key2, val in items:
-        vals.append(val)
+        raw_vals.append(val)
+
+    # remove potential inf
+    vals = [x for x in raw_vals if not math.isinf(x)]
 
     # one val corresponds to two members.
     if len(vals) <= 0:
